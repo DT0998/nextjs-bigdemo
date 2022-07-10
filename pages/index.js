@@ -1,11 +1,18 @@
-import { useEffect, useState } from "react";
-import Layout from "../components/layout/Layout";
+import Head from "next/head";
 import MeetupList from "../components/meetups/MeetupList";
 import { MongoClient } from "mongodb";
-
+import React from "react";
 
 function HomePage(props) {
-  return <MeetupList meetups={props.meetups} />;
+  return (
+    <React.Fragment>
+      <Head>
+        <title>React Meetups</title>
+        <meta name="description" content="Browser a huge list of highly active React meetups!" />
+      </Head>
+      <MeetupList meetups={props.meetups} />;
+    </React.Fragment>
+  );
 }
 
 // SSR
@@ -36,7 +43,7 @@ export async function getStaticProps() {
         title: meetup.title,
         address: meetup.address,
         image: meetup.image,
-        id:meetup._id.toString()
+        id: meetup._id.toString(),
       })),
     },
     revalidate: 10,
