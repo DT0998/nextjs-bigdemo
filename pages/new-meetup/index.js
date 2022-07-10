@@ -24,7 +24,7 @@ function NewMeetupPage() {
         <meta name="description" content="Add your own meetups and create amazing networking opportunities." />
       </Head>
       <NewMeetupForm onAddMeetup={addMeetupHandler} />;
-    </React.fragment>
+    </React.Fragment>
   )
 }
 
